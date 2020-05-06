@@ -1,14 +1,14 @@
-// find all primes from a to b using segmented sieve, 1 <= a <= b <= 1e9, b - a <= 1e6
+// find all primes from a to b using segmented sieve, 1 <= a <= b <= 1e9, b - a <= 1e5
 
 #include <bits/stdc++.h>
 
-const int LIMIT = 1e6;
+const int LIMIT = 1e5;
 const int maxN = 32001;
 
 using namespace std;
 
 static bool prime[maxN];
-static int arr[LIMIT];
+static bool arr[LIMIT];
 
 void sieve() {
     memset(prime, true, sizeof prime);
@@ -31,42 +31,33 @@ int main() {
     if(b <= maxN){
         for (int i = 2; i <= (b - a + 1); i++) {
             if (prime[i])
-                cout << i << " ";
+                cout << i << endl;
         }
         return 0;
     }
     if(a <= maxN && b > maxN){
         for (int i = a; i <= maxN; i++) {
             if (prime[i])
-                cout << i << " ";
+                cout << i << endl;
         }
         len = b - maxN;
         a = maxN + 1;
     }
-    for (int i = 0; i < len; i++) {
-        arr[i] = i + a;
-    }
+    memset(arr, true, sizeof arr);
     if (a % 2)
         ++start;
-    for (int i = start; i < len; i += 2) {
-        while (arr[i] % 2 == 0) {
-            arr[i] /= 2;
-        }
-    }
+    for (int i = start; i < len; i += 2)
+        arr[i] = false;
     for (int i = 3; i < maxN; i += 2) {
         if (prime[i]) {
             start = a % i == 0 ? 0 : (i - (a % i));
-            for (int j = start; j < len; j += i) {
-                while (arr[j] % i == 0) {
-                    arr[j] /= i;
-                }
-            }
+            for (int j = start; j < len; j += i) 
+                arr[j] = false;
         }
     }
     for (int i = 0; i < len; i++) {
-        if (arr[i] != 1)
-            cout << i + a << " ";
+        if (arr[i])
+            cout << i + a << endl;
     }
     return 0;
 }
- 
