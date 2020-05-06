@@ -23,17 +23,16 @@ void sieve() {
     }
 }
 
-int main() {
-    int a, b, start = 0, len;
-    cin >> a >> b;
+void seg_sieve(int a, int b){
+    int start = 0, len;
     len = b - a + 1;
     sieve();
     if(b <= maxN){
-        for (int i = 2; i <= len; i++) {
+        for (int i = 2; i <= (b - a + 1); i++) {
             if (prime[i])
                 cout << i << endl;
         }
-        return 0;
+        return;
     }
     if(a <= maxN && b > maxN){
         for (int i = a; i <= maxN; i++) {
@@ -59,5 +58,11 @@ int main() {
         if (arr[i])
             cout << i + a << endl;
     }
+}
+
+int main() {
+    int a, b;
+    cin >> a >> b;
+    seg_sieve(a, b);
     return 0;
 }
