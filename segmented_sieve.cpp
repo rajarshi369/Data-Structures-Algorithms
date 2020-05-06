@@ -28,7 +28,7 @@ void seg_sieve(int a, int b){
     len = b - a + 1;
     sieve();
     if(b <= maxN){
-        for (int i = 2; i <= (b - a + 1); i++) {
+        for (int i = 2; i <= len; i++) {
             if (prime[i])
                 cout << i << endl;
         }
