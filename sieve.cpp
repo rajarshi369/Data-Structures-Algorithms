@@ -1,6 +1,6 @@
 // print all primes from 1 to LIMIT using sieve of Erastosthenes
 
-#include <bits/stdc++.h>
+#include <iostream>
 
 const int LIMIT = 1e6;
 static bool prime[LIMIT];

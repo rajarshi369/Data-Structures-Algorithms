@@ -1,6 +1,6 @@
 // find all primes from a to b using segmented sieve, 1 <= a <= b <= 1e9, b - a <= 1e5
 
-#include <bits/stdc++.h>
+#include <iostream>
 
 const int LIMIT = 1e5;
 const int maxN = 32001;
