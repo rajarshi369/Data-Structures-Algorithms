@@ -30,6 +30,6 @@ int main(){
         adj[x - 1].push_back(y - 1), adj[y - 1].push_back(x - 1);
     }
     dfs(0, -1);
-    for(int i : FT)
-        cout << i << " ";
+    for(int i = 0; i < 2 * n; i++)
+        cout << FT[i] + 1 << " ";
 }
